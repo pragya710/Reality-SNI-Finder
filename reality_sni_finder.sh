@@ -21,7 +21,7 @@ line() { printf "${C4}───────────────────�
 title() {
   clear
   printf "${BOLD}${C0}┌──────────────────────────────────────────────────────────┐${RESET}\n"
-  printf "${BOLD}${C0}│${RESET} ${BOLD}${C1}${APP_NAME}${RESET} ${C4}— simple SNI hunter for Reality${RESET} ${BOLD}${C0}│${RESET}\n"
+  printf "${BOLD}${C0}│${RESET} ${BOLD}${C1}${APP_NAME}${RESET} ${C4}— simple SNI hunter for Reality      ${RESET} ${BOLD}${C0}│${RESET}\n"
   printf "${BOLD}${C0}└──────────────────────────────────────────────────────────┘${RESET}\n"
 }
 
@@ -45,10 +45,10 @@ load_conf() { [[ -f "$CONF_FILE" ]] && source "$CONF_FILE" || true; }
 save_conf() {
   cat > "$CONF_FILE" <<EOF
 # Reality SNI Finder config
-export RSF_BLOCKS="${RSF_BLOCKS:-10}"
-export RSF_RATE="${RSF_RATE:-6000}"
+export RSF_BLOCKS="${RSF_BLOCKS:-6}"
+export RSF_RATE="${RSF_RATE:-4000}"
 export RSF_TIMEOUT="${RSF_TIMEOUT:-8}"
-export RSF_THREADS="${RSF_THREADS:-128}"
+export RSF_THREADS="${RSF_THREADS:-64}"
 export RSF_VERIFY_H2="${RSF_VERIFY_H2:-1}"
 export RSF_INCLUDE_GENERIC="${RSF_INCLUDE_GENERIC:-1}"
 export RSF_REF_IP="${RSF_REF_IP:-}"
@@ -240,10 +240,10 @@ def ipnum_dist_norm(a: str, b: str)->float:
         d=abs(int(ipaddress.ip_address(a))-int(ipaddress.ip_address(b))); return d/(2**32)*1000.0
     except Exception: return 1000.0
 def main():
-    blocks=int(os.environ.get("RSF_BLOCKS","10"))
-    rate=int(os.environ.get("RSF_RATE","6000"))
+    blocks=int(os.environ.get("RSF_BLOCKS","6"))
+    rate=int(os.environ.get("RSF_RATE","4000"))
     timeout=float(os.environ.get("RSF_TIMEOUT","8"))
-    threads=int(os.environ.get("RSF_THREADS","128"))
+    threads=int(os.environ.get("RSF_THREADS","64"))
     include_generic=os.environ.get("RSF_INCLUDE_GENERIC","1")=="1"
     verify_h2=os.environ.get("RSF_VERIFY_H2","1")=="1"
     ref_ip_env=os.environ.get("RSF_REF_IP","").strip()
@@ -302,10 +302,10 @@ PY
 # ---------- Run engine ----------
 run_engine() {
   load_conf
-  export RSF_BLOCKS="${RSF_BLOCKS:-10}"
-  export RSF_RATE="${RSF_RATE:-6000}"
+  export RSF_BLOCKS="${RSF_BLOCKS:-6}"
+  export RSF_RATE="${RSF_RATE:-4000}"
   export RSF_TIMEOUT="${RSF_TIMEOUT:-8}"
-  export RSF_THREADS="${RSF_THREADS:-128}"
+  export RSF_THREADS="${RSF_THREADS:-64}"
   export RSF_VERIFY_H2="${RSF_VERIFY_H2:-1}"
   export RSF_INCLUDE_GENERIC="${RSF_INCLUDE_GENERIC:-1}"
   export RSF_REF_IP="${RSF_REF_IP:-}"
@@ -337,10 +337,10 @@ edit_settings() {
   load_conf
   printf "\nCurrent settings:\n"
   line
-  printf "Blocks each side      : ${BOLD}%s${RESET}\n" "${RSF_BLOCKS:-10}"
-  printf "Masscan rate (pps)    : ${BOLD}%s${RESET}\n" "${RSF_RATE:-6000}"
+  printf "Blocks each side      : ${BOLD}%s${RESET}\n" "${RSF_BLOCKS:-6}"
+  printf "Masscan rate (pps)    : ${BOLD}%s${RESET}\n" "${RSF_RATE:-4000}"
   printf "Timeout (sec)         : ${BOLD}%s${RESET}\n" "${RSF_TIMEOUT:-8}"
-  printf "Threads               : ${BOLD}%s${RESET}\n" "${RSF_THREADS:-128}"
+  printf "Threads               : ${BOLD}%s${RESET}\n" "${RSF_THREADS:-64}"
   printf "Verify HTTP/2         : ${BOLD}%s${RESET}\n" "${RSF_VERIFY_H2:-1}"
   printf "Include generic SANs  : ${BOLD}%s${RESET}\n" "${RSF_INCLUDE_GENERIC:-1}"
   printf "Override ref IP       : ${BOLD}%s${RESET}\n" "${RSF_REF_IP:-}"
