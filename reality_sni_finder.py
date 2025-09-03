@@ -11,7 +11,7 @@ Reality SNI Finder
 - Shows progress bars; quiet otherwise.
 
 Env overrides (optional):
-  RSF_BLOCKS (default 10), RSF_RATE (6000), RSF_TIMEOUT (8), RSF_THREADS (128),
+  RSF_BLOCKS (default 6), RSF_RATE (4000), RSF_TIMEOUT (8), RSF_THREADS (64),
   RSF_INCLUDE_GENERIC (1/0), RSF_VERIFY_H2 (1/0), RSF_REF_IP (IPv4).
 """
 
@@ -175,10 +175,10 @@ def ipnum_dist_norm(a: str, b: str)->float:
 
 # ---------------- Main ----------------
 def main():
-    blocks = int(os.environ.get("RSF_BLOCKS", "10"))
-    rate = int(os.environ.get("RSF_RATE", "6000"))
+    blocks = int(os.environ.get("RSF_BLOCKS", "6"))
+    rate = int(os.environ.get("RSF_RATE", "4000"))
     timeout = float(os.environ.get("RSF_TIMEOUT", "8"))
-    threads = int(os.environ.get("RSF_THREADS", "128"))
+    threads = int(os.environ.get("RSF_THREADS", "64"))
     include_generic = os.environ.get("RSF_INCLUDE_GENERIC", "1") == "1"
     verify_h2 = os.environ.get("RSF_VERIFY_H2", "1") == "1"
     ref_ip_env = os.environ.get("RSF_REF_IP", "").strip()
