@@ -176,5 +176,7 @@ rm -f reality_sni_finder.sh reality_sni_finder.py .rsf.conf domains.txt
 
 ---
 
+## Repository Popularity
+[![Stargazers over time](https://starchart.cc/ShatakVPN/Reality-SNI-Finder.svg?variant=adaptive)](https://starchart.cc/ShatakVPN/Reality-SNI-Finder)
 
 **Enjoy faster, steadier Reality configs with SNI targets that actually live near your server. Stay on the right side of the line—scan kindly.**
