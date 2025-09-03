@@ -98,10 +98,10 @@ You can also export these before starting the launcher:
 
 | Variable             | Default | Description                              |
 |----------------------|---------|------------------------------------------|
-| `RSF_BLOCKS`         | `10`    | Neighbor /24s each side                  |
-| `RSF_RATE`           | `6000`  | masscan packets per second               |
+| `RSF_BLOCKS`         | `6`    | Neighbor /24s each side                  |
+| `RSF_RATE`           | `4000`  | masscan packets per second               |
 | `RSF_TIMEOUT`        | `8`     | verification timeout (sec)               |
-| `RSF_THREADS`        | `128`   | concurrency                              |
+| `RSF_THREADS`        | `64`   | concurrency                              |
 | `RSF_VERIFY_H2`      | `1`     | `1`=verify HTTP/2, `0`=skip              |
 | `RSF_INCLUDE_GENERIC`| `1`     | `1`=include generic SANs, `0`=exclude    |
 | `RSF_REF_IP`         | (auto)  | override detected public IPv4            |
