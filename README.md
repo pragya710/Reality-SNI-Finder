@@ -1,3 +1,5 @@
+🌐 Available in: [English](README.md) | [فارسی](README_FA.md) | [Русский](README_RU.md) | [中文](README_ZH.md)
+
 # Reality SNI Finder
 
 **Reality SNI Finder** discovers HTTPS domains (SNI candidates) hosted on IPs **near your VPS** so you can pick SNI values that are low-latency and path-efficient for **Xray/Reality**.  
